@@ -1,0 +1,21 @@
+---
+- name: EOS Example
+  hosts: pynet-sw5
+  vars:
+    ssh:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      transport: cli
+    eapi:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      transport: eapi
+      use_ssl: True
+      validate_certs: no
+
+  tasks:
+    - eos_facts:
+        provider: "{{ eapi }}"
+
